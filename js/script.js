@@ -36,7 +36,7 @@ const generateTitleLinks = function(){
     const articleId = article.getAttribute('id');
     /*[DONE] find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-    /* [DONE]get the title from the title element */
+     /* [DONE]get the title from the title element */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     /*[DONE] create and insert HTML of the link */
     titleList.insertAdjacentHTML('beforeend', linkHTML);
@@ -55,24 +55,24 @@ function generateTags(){
     /* find tags wrapper */
     const tagList = article.querySelector(optArticleTagsSelector);
     /* make html variable with empty string */
-    let html = ''; /*nie kumam, tego momentu, co tutaj miałam zrobić? .........................*/
+    tagList.innerHTML = '';
     /* get tags from data-tags attribute */
     const articleTags = article.getAttribute('data-tags');
-    console.log(articleTags);
     /* split tags into array */
-
+    const articleTagsArray = articleTags.split(' ');
     /* START LOOP: for each tag */
-
+    for(let tag of articleTagsArray){
       /* generate HTML of the link */
-
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>'+ '  ';
       /* add generated code to html variable */
-
+      tagList.insertAdjacentHTML('beforeend', linkHTML);
     /* END LOOP: for each tag */
-
+    }
     /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article: */
-  }
+
+ }
 }
 
 generateTags();
