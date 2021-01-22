@@ -74,7 +74,8 @@ function generateTags(){
 generateTags();
 function tagClickHandler(event){
   /* prevent default action for this event */
-
+  debugger;
+  event.preventDefault();
   /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
   /* make a new constant "href" and read the attribute "href" of the clicked element */
@@ -103,8 +104,11 @@ function tagClickHandler(event){
 function addClickListenersToTags(){
   /* find all links to tags */
   const links = document.querySelectorAll('.post-tags .list a');
+  /* START LOOP: for each link */
   for(let link of links){
-    link.addEventListener('click', titleClickHandler);
+    /* add tagClickHandler as event listener for that link */
+    link.addEventListener('click', tagClickHandler);
+    /* END LOOP: for each link */
   }
 }
 
