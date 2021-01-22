@@ -25,12 +25,12 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
-const generateTitleLinks = function(){
+const generateTitleLinks = function(customSelector = ''){
   /* [DONE] remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
   /* [DONE]for each article */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
   for(let article of articles){
     /* [DONE] get the article id */
     const articleId = article.getAttribute('id');
@@ -74,7 +74,6 @@ function generateTags(){
 generateTags();
 function tagClickHandler(event){
   /* prevent default action for this event */
-  debugger;
   event.preventDefault();
   /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
