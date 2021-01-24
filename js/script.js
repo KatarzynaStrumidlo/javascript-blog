@@ -64,7 +64,6 @@ function calculateTagsParams(tags){
 calculateTagsParams();
 
 function calculateTagClass(count, params){
-  debugger;
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
@@ -165,13 +164,20 @@ function addClickListenersToTags(){
 }
 addClickListenersToTags();
 function generateAuthors(){
+  let allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
   for(let article of articles){
     const authorName = article.querySelector(optArticleAuthorSelector);
     authorName.innerHTML = '';
-    const articleAuthors = article.getAttribute('data-authors');
-    const linkHTML = '<a href="#author-' + articleAuthors + '">' + articleAuthors + '</a>';
+    const author = article.getAttribute('data-authors');
+    const linkHTML = '<a href="#author-' + author + '">' + author + '</a>';
     authorName.insertAdjacentHTML('beforeend', linkHTML);
+    if(!allAuthors[author]) {
+    /* [NEW] add author to allAuthors object */
+      allAuthors[author] = 1;
+    } else {
+       allAuthors[author]++;
+    }
   }
 }
 generateAuthors();
