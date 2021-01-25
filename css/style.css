@@ -107,4 +107,65 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
+
+.sidebar .tags li {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 2px;
+}
+
+.sidebar .tags li a {
+  text-decoration: none;
+  text-align: center;
+}
+
+.tag-size-1 {
+  font-size: 12px;
+  color: #17BEBB;
+}
+
+.tag-size-2 {
+  font-size: 17px;
+  color: #2E282A;
+}
+
+.tag-size-3 {
+  font-size: 22px;
+  color: #CD5334;
+}
+
+.tag-size-4 {
+  font-size: 27px;
+  color: #EDB88B;
+}
+
+.tag-size-5 {
+  font-size: 32px;
+  color: #F4A8A4;
+}
+
+.tag-size-6 {
+  font-size: 24px;
+  color: brown;
+}
+
+.tag-size-7 {
+  font-size: 26px;
+  color: orange;
+}
+
+.tag-size-8 {
+  font-size: 28px;
+  color: sandybrown;
+}
+
+.tag-size-9 {
+  font-size: 30px;
+  color: teal;
+}
+
+.tag-size-10 {
+  font-size: 32px;
+  color: grey;
+}
 /*# sourceMappingURL=style.css.map */
