@@ -3,7 +3,8 @@ const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
   authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+  authorsSidebarLink: Handlebars.compile(document.querySelector('#template-authors-sidebar-link').innerHTML)
 }
 
 const titleClickHandler = function(event){
@@ -129,7 +130,7 @@ function generateTags(){
   }
   /*[NEW] add HTML from allTagsHTML to tagList */
   //tagList.insertAdjacentHTML('beforeend', allTagsHTML);
-  tagList.innerHTML = templates.tagCloudLink;//(allTagsData);
+  tagList.innerHTML = templates.tagCloudLink(allTagsData);
   console.log(allTagsData);
 }
 
@@ -197,12 +198,20 @@ function generateAuthors(){
   }
   const authorList = document.querySelector('.authors');
   const authorsParams = calculateAuthorsParams(allAuthors);
-  let allAuthorsHTML = '';
+  //let allAuthorsHTML = '';
+  const allAuthorsData = {authors: []};
   for(let author in allAuthors){
-    const authorLinkHTML = '<li><a href="#author-' + author +' (' + allAuthors[author] + ')"' + '>' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
-    allAuthorsHTML += authorLinkHTML;
+    //const authorLinkHTML = '<li><a href="#author-' + author +' (' + allAuthors[author] + ')"' + '>' + author + ' (' + allAuthors[author] + ')' + '</a></li>';
+    //allAuthorsHTML += authorLinkHTML;
+    allAuthorsData.authors.push({
+      author: author,
+      count: allAuthors[author],
+      //className: calculateTagClass(allTags[tag], tagsParams)
+    });
   }
-  authorList.insertAdjacentHTML('beforeend', allAuthorsHTML);
+  //authorList.insertAdjacentHTML('beforeend', allAuthorsHTML);
+  authorList.innerHTML = templates.authorsSidebarLink(allAuthorsData);
+  console.log(allAuthorsData);
 }
 generateAuthors();
 function authorsClickHandler(event){
